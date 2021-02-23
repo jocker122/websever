@@ -84,6 +84,30 @@ public class HttpRequest {
               参数名和参数值，并将参数名作为key,参数值作为value保存到paramer这个Map中
               完成解析工作。
          */
+        //判断uri是否包含有参数
+        if(uri.contains("?")){
+            String[] data = uri.split("\\?");
+            requestURI = data[0];
+            // http://localhost:8088/myweb/regUser?
+            if(data.length>1){
+                queryString = data[1];
+                //username=fancq&password=123456&nickname=chuanqi&age=22
+                //拆分每一组参数
+                data = queryString.split("&");
+                for(String para : data){
+                    //username=fancq
+                    //按照=拆分参数名与参数值
+                    String[] paras = para.split("=");
+                    if(paras.length>1){
+                        parameter.put(paras[0],paras[1]);
+                    }else{
+                        parameter.put(paras[0],null);
+                    }
+                }
+            }
+        }else{
+            requestURI = uri;
+        }
 
         System.out.println("requestURI:"+requestURI);
         System.out.println("queryString:"+queryString);
@@ -161,6 +185,23 @@ public class HttpRequest {
      */
     public String getHeader(String name) {
         return headers.get(name);
+    }
+
+    public String getRequestURI() {
+        return requestURI;
+    }
+
+    public String getQueryString() {
+        return queryString;
+    }
+
+    /**
+     * 根据参数名获取参数值
+     * @param name
+     * @return
+     */
+    public String getParameter(String name) {
+        return parameter.get(name);
     }
 }
 

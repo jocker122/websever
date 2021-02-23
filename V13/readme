@@ -7,3 +7,12 @@
 
 实现：
 1：在webapps/myweb这个网络应用中添加一个新的页面：reg.html
+   通过这个页面我们学习表单使用。
+
+2：重构HttpRequest
+   在HttpRequest中添加三个新的属性：requestURI,queryString,parameter
+   并添加一个方法parseUri,用于将uri进一步拆分并存入上述三个属性。
+   然后在解析请求行的方法parseRequestLine中当解析请求行获取uri的值后，进一步拆分，
+   最后为三个属性添加get方法，以便外界可以通过请求对象获取用户在页面上输入的数据。
+
+处理注册业务在下一个版本完成。
