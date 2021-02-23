@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -17,6 +18,11 @@ public class HttpRequest {
     private String method;//请求方式
     private String uri;//抽象路径
     private String protocol;//协议版本
+
+
+    private String requestURI;//存储抽象路径中的请求部分，即：uri中？左侧的内容
+    private String queryString;//存抽象路径中的参数部分，即：uri中？右侧部分
+    private Map<String,String> parameter = new HashMap<>();//存每一组参数
 
     //消息头相关信息
     private Map<String,String> headers = new HashMap<>();
@@ -55,6 +61,7 @@ public class HttpRequest {
             method = data[0];
             uri = data[1];
             protocol = data[2];
+            parseUri();//解析请求行的三部分之后，对uri抽象路径部分进一步拆分。
             System.out.println("method:"+method);//method:GET
             System.out.println("uri:"+uri);//uri:/index.html
             System.out.println("protocol:"+protocol);//protocol:HTTP/1.1
@@ -63,6 +70,26 @@ public class HttpRequest {
         }
         System.out.println("HttpRequest:请求行解析完毕!");
     }
+    //进一步解析uri
+    private void parseUri(){
+        /*
+            uri会存在两种情况：含有参数和不含有参数
+            不含有参数的样子如：/myweb/index.html
+            含有参数的样子如：/myweb/regUser?username=xxx&password=xxx......
+            因此我们要对uri不含有参数，则不需要拆分，直接uri的值赋值给requestURI即可
+
+            如果uri含有参数，则需要进行拆分：
+            1:将uri按照“？”拆分为两部分，左侧赋值给requestURI，右侧赋值给queryString
+            2:在将queryString部分按照“&”拆分出每一组参数，然后每一组参数再按照“=”拆分为
+              参数名和参数值，并将参数名作为key,参数值作为value保存到paramer这个Map中
+              完成解析工作。
+         */
+
+        System.out.println("requestURI:"+requestURI);
+        System.out.println("queryString:"+queryString);
+        System.out.println("parameter:"+parameter);
+    }
+
     //2:解析消息头
     private void parseHeaders(){
         System.out.println("HttpRequest:开始解析消息头...");
