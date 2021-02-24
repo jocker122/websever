@@ -32,10 +32,10 @@ public class HttpContext {
             for(Element element : list){
                 String key = element.elementText("extension");
                 String value = element.elementText("mime-type");
-                System.out.println(key+":"+value);
+                //System.out.println(key+":"+value);
                 mimeMapping.put(key,value);
             }
-            System.out.println(mimeMapping.size());
+            //System.out.println(mimeMapping.size());
         }catch(Exception e){
             e.printStackTrace();
         }

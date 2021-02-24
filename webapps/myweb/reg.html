@@ -2,59 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>用户注册</title>
 </head>
 <body>
-      <center>
-          <h1>欢迎注册</h1>
-          <!--
-            <form>标签为表单，是用来将用户在页面上输入的信息提交给服务端使用的。
-            form上有两个重要的属性：
-            1：action,用来指定表单提交的路径，这个路径需要服务端配合处理。
-            2：method,有两个值可用：GET,POST.指的是表单提交的方式
-                      GET:用户表单中输入的信息会被拼接到URL中进行提交
-                      POST:数据会被包含在请求的消息正文中被提交，通常
-                      表单中含有用户隐私信息（如密码）或者表单中含有用户
-                      上传的附件时要使用POST形式提交。
-                      method属性不指定时，默认为GET形式提交。
-          -->
-          <!--
-              点击提交按钮后，浏览器地址栏请求的路径如下：
-              http://localhost:63342/WebServer/webapps/myblog/regUser?username=dfjlkds&password=sdasdad&nickname=wdsawd&age=34
-              URL地址中？是用来将地址分割为两部分，前面是请求部分，后面是参数部分。
-              上述地址中？左侧内容是由form表单中action指定的路径为准的.
-              ？右侧的内容就是表单中输入框的信息，格式为：输入框的名字=输入框输入的信息，每个输入框信息之间用&分割
+    <center>
+        <h1>欢迎注册</h1>
+        <!--
+            <form>标签称为表单.是用来将用户在页面上输入的信息提交给服务端使用的.
+            form上有两个重要的属性:
+            1:action,用来指定表单提交的路径,这个路径需要服务端配合处理.
+            2:method,有两个值可用:GET,POST.指的是表单提交的方式
+                     GET:用户表单中输入的信息会被拼接到URL中进行提交
+                     POST:数据会被包含在请求的消息正文中被提交.通常表单中含有用户隐私信息(如密码)
+                          或者表单中含有用户上传的附件时要使用POST形式提交.
+                     method属性不指定时,默认为GET形式提交.
+        -->
+        <!--
+            点击提交按钮后,浏览器地址栏请求的路径如下:
+            http://localhost:8088/myweb/reg.html
+            http://localhost:8088/myweb/regUser?username=fancq&password=123456&nickname=chuanqi&age=22
+            URL地址中?是用来将地址分割为两部分,前面是请求部分,后面是参数部分.
+            上述地址中?左侧内容是由form表单中action指定的路径为准的.
+            ?右侧的内容就是表单中各输入框的信息,格式为:输入框的名字=输入框输入的信息.每个输入框信息之间用&分割
 
-          -->
-          <form action="./regUser"method="get">
+         -->
+        <!--<form action="./regUser" method="get">-->
+        <!--
+            post提交时,内容会被包含在请求的消息正文中提交.在没有附件的情况下,内容仍然是字符串.
+            并且格式与get中?右侧一致.
+         -->
+        <form action="./regUser" method="post">
             <table border="1">
-              <tr>
-                  <td>用户名</td>
-                  <!-- 表单中所有的输入框都要指定name属性，否则提交时会被忽略 -->
-                  <td><input name="username" type="text"></td>
-              </tr>
-              <tr>
-                  <td>密码</td>
-                  <td><input name="password" type="password"></td>
-              </tr>
-              <tr>
-                  <td>昵称</td>
-                  <td><input name="nickname" type="text"></td>
-              </tr>
-              <tr>
-                  <td>年龄</td>
-                  <td><input name="age" type="text"></td>
-              </tr>
-              <tr>
-                  <td align="center" colspan="2">
-                      <!--
-                         submit是提交按钮，点击该按钮会将包含它的form表单进行提交
-                      -->
-                      <input type="submit" value="注册">
-                  </td>
-              </tr>
+                <tr>
+                    <td>用户名</td>
+                    <!-- 表单中所有的输入框都要指定name属性,否则提交时会被忽略 -->
+                    <td><input name="username" type="text"></td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td><input name="password" type="password"></td>
+                </tr>
+                <tr>
+                    <td>昵称</td>
+                    <td><input name="nickname" type="text"></td>
+                </tr>
+                <tr>
+                    <td>年龄</td>
+                    <td><input name="age" type="text"></td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <!--
+                         submit是提交按钮,点击该按钮会将包含它的form表单进行提交
+                         -->
+                        <input type="submit" value="注册">
+                    </td>
+                </tr>
             </table>
-          </form>
-      </center>
+        </form>
+    </center>
 </body>
 </html>

@@ -91,9 +91,9 @@ public class HttpResponse {
         System.out.println("HttpResponse:响应头发送完毕!");
     }
     //3:发送响应正文
-    private void sendContent() {
+    private void sendContent(){
         System.out.println("HttpResponse:开始发送响应正文...");
-        if (entity!=null) {
+        if(entity!=null) {
             try (
                     //创建文件输入流读取要发送的文件数据
                     FileInputStream fis = new FileInputStream(entity);
@@ -107,8 +107,8 @@ public class HttpResponse {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("HttpResponse:响应正文发送完毕!");
         }
+        System.out.println("HttpResponse:响应正文发送完毕!");
     }
 
     private void println(String line) throws IOException {

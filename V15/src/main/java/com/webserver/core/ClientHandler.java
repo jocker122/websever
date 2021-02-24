@@ -33,6 +33,7 @@ public class ClientHandler implements Runnable{
             //2处理请求
             //首先通过request获取请求中的抽象路径中的请求部分
             String path = request.getRequestURI();
+
             //首先判断本次请求是否为请求某个业务
             if("/myweb/regUser".equals(path)){
                 //处理注册业务

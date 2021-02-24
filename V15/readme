@@ -44,3 +44,12 @@
 /myweb/regUser?username=E88C83E4BCA0E5A587&password=123&....
 为了与实际数据中的英文数字组合区分.因此凡是16进制的内容前面要添加一个%
 /myweb/regUser?username=%E8%8C%83%E4%BC%A0%E5%A5%87&password=123&....
+
+
+
+支持POST形式的表单提交
+form表单上如果method属性的值为post，则表单提交后，输入框中输入的内容会体现在请求的消息正文中，
+实际上此时消息正文中的内容还是文字，并且格式与get形式提交，抽象路径中？右侧内容的格式是一致的。
+
+实现：
+完成HttpRequest中解析消息正文的方法
