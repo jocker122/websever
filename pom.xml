@@ -21,6 +21,8 @@
         <module>V14</module>
         <module>V15</module>
         <module>V16</module>
+        <module>V17</module>
+        <module>V18</module>
     </modules>
     <properties>
         <!-- 设置 JDK 版本为 1.8 -->
@@ -39,6 +41,12 @@
             <groupId>org.dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>2.1.1</version>
+        </dependency>
+        <!-- Thymeleaf -->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.0.11.RELEASE</version>
         </dependency>
     </dependencies>
 
